@@ -6,13 +6,13 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-contact',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: '../../templates/pages/contact.component.html'
+  templateUrl: '../templates/pages/contact.html',
 })
 export class ContactComponent {
   contactData = {
     name: '',
     email: '',
-    message: ''
+    message: '',
   };
 
   isLoading = false;
@@ -20,7 +20,7 @@ export class ContactComponent {
   onSubmit(): void {
     if (this.isValidForm()) {
       this.isLoading = true;
-      
+
       // Simulate API call
       setTimeout(() => {
         console.log('Contact form submitted:', this.contactData);
@@ -39,7 +39,7 @@ export class ContactComponent {
     this.contactData = {
       name: '',
       email: '',
-      message: ''
+      message: '',
     };
   }
 }
