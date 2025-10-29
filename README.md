@@ -91,32 +91,10 @@ graph TB
                                     └─────────────────┘
 ```
 
-### 3. Component Architecture (Angular)
-
-```
-AppComponent
-├── HeaderComponent
-├── NavigationComponent
-├── DashboardComponent
-│   ├── UrlInputComponent
-│   ├── TrafficMetricsComponent
-│   ├── PerformanceMetricsComponent
-│   ├── TechnologyStackComponent
-│   └── CompetitorAnalysisComponent
-├── ReportsComponent
-│   ├── ExportComponent
-│   └── HistoricalTrendsComponent
-└── AdminComponent
-    ├── UsageStatsComponent
-    └── SystemHealthComponent
-```
-
 ## Installation
 
 ### Prerequisites
 - Node.js 18+
-- PostgreSQL 15+
-- Redis 6+
 - Docker (optional)
 
 ### Quick Start
@@ -124,91 +102,27 @@ AppComponent
 1. **Clone the repository**
 ```bash
 git clone https://github.com/naveenfullstack/zap.git
-cd pac
 ```
 
 2. **Install dependencies**
 ```bash
-# Install backend dependencies
-cd backend
-npm install
-
 # Install frontend dependencies
-cd ../frontend
+npm install
+
+# Install backend dependencies
+cd api
 npm install
 ```
 
-3. **Environment setup**
+3. **Start services**
 ```bash
-# Copy environment files
-cp backend/.env.example backend/.env
-cp frontend/src/environments/environment.example.ts frontend/src/environments/environment.ts
 
-# Update environment variables
-# Database configuration, API keys, etc.
-```
+# Start frontend
+npm run Start
 
-4. **Database setup**
-```bash
-# Run migrations
-cd backend
-npm run migration:run
-
-# Seed initial data (optional)
-npm run seed
-```
-
-5. **Start services**
-```bash
-# Start Redis (if not using Docker)
-redis-server
-
-# Start PostgreSQL (if not using Docker)
-# See PostgreSQL documentation
-
-# Start backend
-cd backend
+# Start backend (in new terminal)
+cd api
 npm run start:dev
-
-# Start frontend (in new terminal)
-cd frontend
-npm run serve
-```
-
-### Docker Setup
-
-```bash
-# Build and start all services
-docker-compose up -d
-
-# View services
-docker-compose ps
-```
-
-## Performance Considerations
-
-### Caching Strategy
-- **Redis**: Cache frequently requested analyses (TTL: 1 hour)
-- **Database**: Optimize queries with proper indexing
-- **CDN**: Serve static assets and reports via CDN
-
-### Scaling
-- **Horizontal Scaling**: Multiple NestJS instances behind load balancer
-- **Database Sharding**: Partition data by URL domain or date
-- **Queue Management**: Use Bull Queue for background processing
-
-### Code Standards
-- **TypeScript**: Strict mode enabled
-- **Linting**: ESLint + Prettier
-- **Testing**: Cypress (e2e)
-
-### Testing
-```bash
-# Run unit tests
-npm run test
-
-# Run e2e tests
-npm run test:e2e
 ```
 
 **Built with ❤️ using Angular, NestJS, PostgreSQL, and Redis**
